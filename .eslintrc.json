@@ -30,6 +30,7 @@
     "@typescript-eslint/consistent-type-imports": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
     "prettier/prettier": [
     "error",
     {
