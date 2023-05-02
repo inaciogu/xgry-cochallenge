@@ -7,7 +7,7 @@ export class SignInWithGoogle {
     const { error } = await this.supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: '/',
+        redirectTo: 'http://localhost:3000/dashboard',
         scopes: 'profile',
       },
     })
