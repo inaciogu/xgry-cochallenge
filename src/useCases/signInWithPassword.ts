@@ -15,11 +15,11 @@ export class SignInWithPassword {
     })
 
     if (error) {
+      console.log(error)
       throw new Error('Error signing in: ' + error.message)
     }
-    console.log(data.user)
     return {
-      user: data.user,
+      token: data.session?.access_token,
     }
   }
 }
