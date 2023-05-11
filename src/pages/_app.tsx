@@ -1,14 +1,10 @@
 import AuthProvider from '@/context/auth'
+import GlobalStyles from '@/styles/GlobalStyles'
 import { createEmotionCache } from '@/styles/emotionCache'
-import '@/styles/globals.css'
-import {
-  CacheProvider,
-  EmotionCache,
-  ThemeProvider,
-  useTheme,
-} from '@emotion/react'
-import { CssBaseline } from '@mui/material'
+import ThemeConfig from '@/styles/theme'
+import { CacheProvider, EmotionCache } from '@emotion/react'
 import type { AppProps } from 'next/app'
+import { SnackbarProvider } from 'notistack'
 
 const clienteSideEmotionCache = createEmotionCache()
 
@@ -21,16 +17,16 @@ export default function App({
   pageProps,
   emotionCache = clienteSideEmotionCache,
 }: MyAppProps) {
-  const theme = useTheme()
-
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AuthProvider>
-          <Component {...pageProps} />
-        </AuthProvider>
-      </ThemeProvider>
+      <ThemeConfig>
+        <GlobalStyles />
+        <SnackbarProvider>
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
+        </SnackbarProvider>
+      </ThemeConfig>
     </CacheProvider>
   )
 }
