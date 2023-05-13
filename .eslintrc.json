@@ -27,12 +27,14 @@
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-extraneous-class": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
     "@typescript-eslint/consistent-type-imports": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "prettier/prettier": [
     "error",
     {
