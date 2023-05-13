@@ -1,3 +1,4 @@
+import Logo from '@/components/Logo'
 import { useAuth } from '@/hooks/useAuth'
 import {
   Book,
@@ -17,7 +18,6 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Typography,
 } from '@mui/material'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -37,7 +37,7 @@ export default function Navbar() {
   }
   return (
     <>
-      <AppBar>
+      <AppBar position="relative" color="transparent">
         <Toolbar>
           <Box
             display="flex"
@@ -45,12 +45,7 @@ export default function Navbar() {
             alignItems="center"
             width="100%"
           >
-            <Typography
-              fontWeight="bold"
-              sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }}
-            >
-              LOGO
-            </Typography>
+            <Logo sx={{ display: { xs: 'none', md: 'flex' } }} />
             <Box display="flex">
               <IconButton
                 onClick={() => setOpenDrawer(true)}
@@ -66,18 +61,12 @@ export default function Navbar() {
                   width: '200px',
                 }}
               >
-                <Link href="/faq">FAQ</Link>
-                <Link href="/faq">Manual</Link>
-                <Link href="/faq">Painel</Link>
-                <Link href="/about">About</Link>
+                <Link href="/fac">FAC</Link>
+                <Link href="/manual">Manual</Link>
+                <Link href="/painel">Painel</Link>
               </Box>
             </Box>
-            <Typography
-              fontWeight="bold"
-              sx={{ display: { xs: 'flex', md: 'none' } }}
-            >
-              LOGO
-            </Typography>
+            <Logo sx={{ display: { xs: 'flex', md: 'none' } }} />
             <IconButton onClick={handleOpenUserMenu}>
               <Avatar
                 variant="circular"
@@ -106,7 +95,7 @@ export default function Navbar() {
               <ListItemIcon>
                 <QuestionAnswer />
               </ListItemIcon>
-              <Link href="/faq">FAQ</Link>
+              <Link href="/fac">FAC</Link>
             </ListItem>
             <ListItem>
               <ListItemIcon>
