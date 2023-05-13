@@ -37,7 +37,12 @@ export default function Navbar() {
   }
   return (
     <>
-      <AppBar position="relative" color="transparent">
+      <AppBar
+        variant="outlined"
+        position="relative"
+        color="transparent"
+        sx={{ border: 'none' }}
+      >
         <Toolbar>
           <Box
             display="flex"
@@ -45,7 +50,9 @@ export default function Navbar() {
             alignItems="center"
             width="100%"
           >
-            <Logo sx={{ display: { xs: 'none', md: 'flex' } }} />
+            <Logo
+              sx={{ display: { xs: 'none', md: 'flex' }, color: '#fff', ml: 5 }}
+            />
             <Box display="flex">
               <IconButton
                 onClick={() => setOpenDrawer(true)}
