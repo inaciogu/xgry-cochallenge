@@ -5,6 +5,7 @@ import DarkWheelIcon from '../../public/DarkWheelIcon'
 import { Coda, Rubik } from 'next/font/google'
 import Overlay from '@/layouts/Overlay'
 import HomeCard from '@/components/HomeCard'
+import Footer from '@/layouts/Footer'
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -23,14 +24,17 @@ const cardData = [
     text: 'Cada detalhe sobre seu véiculo explicado de forma simples',
   },
   {
+    key: 2,
     head: 'PASSO A PASSO DE REPAROS',
     text: 'Realize você mesma reparos simples no seu carro',
   },
   {
+    key: 3,
     head: 'ATENDIMENTO ESPECIALIZADO',
     text: 'Indicamos as melhores oficinas mecânicas perto da sua casa',
   },
   {
+    key: 4,
     head: 'MULHERES INSPIRADORAS',
     text: 'Valorizamos a história de mulheres no segmento automotivo',
   },
@@ -135,7 +139,61 @@ export default function Home() {
             ))}
           </Box>
         </Stack>
+        <Box
+          px={8}
+          py={14}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Stack spacing={3} width="451px">
+            <Typography
+              variant="h4"
+              className={rubik.className}
+              fontSize="30px"
+              lineHeight="35px"
+              letterSpacing="0.1em"
+              alignItems="center"
+            >
+              Facilitando sua <b>relação</b> com <b>seu carro</b>
+            </Typography>
+            <Typography className={rubik.className}>
+              O Pilotas.Co nasceu com o objetivo de ajudar mulheres a entender
+              mais sobre seus veículos e se sentirem seguras quando for
+              necessário realizar alguma manutenção,{' '}
+              <b>sem precisar de ninguém</b>.
+            </Typography>
+            <Typography className={rubik.className}>
+              Aqui, você série de recursos para ajudar as mulheres a aprender
+              sobre os diferentes sistemas do carro, como o motor, freios,
+              transmissão e suspensão. Além disso, nossa plataforma fornece
+              <b>tutoriais</b> passo a passo para as{' '}
+              <b>mulheres executarem reparos</b> em seus carros, desde a troca
+              de óleo até a substituição de peças.
+            </Typography>
+            <Button
+              variant="contained"
+              startIcon={<DarkWheelIcon />}
+              sx={{
+                borderRadius: '30px',
+                width: '233px',
+                height: '41px',
+              }}
+            >
+              <Typography className={coda.className} color="#2F4858">
+                COMECE AGORA
+              </Typography>
+            </Button>
+          </Stack>
+          <Box
+            component="img"
+            src="/mechanic.png"
+            alt="mechanic"
+            sx={{ display: { md: 'flex', xs: 'none' } }}
+          />
+        </Box>
       </main>
+      <Footer />
     </>
   )
 }

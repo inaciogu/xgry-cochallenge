@@ -5,8 +5,8 @@ export default function Overlay() {
     <Box
       position="absolute"
       display="flex"
-      width="40%"
-      height="130vh"
+      width={{ md: '40%', xs: '100%' }}
+      height="119%"
       left={0}
       top={0}
       sx={{
@@ -14,7 +14,6 @@ export default function Overlay() {
           'linear-gradient(180deg, rgba(47, 72, 88, 0.5) 0%, rgba(47, 72, 88, 0) 58.84%);',
         backdropFilter: 'blur(10px)',
         transform: 'matrix(0, 1, 1, 0, 0)',
-        filter: 'blur(5px)',
       }}
     />
   )
