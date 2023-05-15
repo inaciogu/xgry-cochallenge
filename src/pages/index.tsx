@@ -69,12 +69,18 @@ export default function Home() {
         >
           <Overlay />
           <Navbar />
-          <Stack px={8} py={10} spacing={2} width="524px" zIndex={9}>
+          <Stack
+            px={8}
+            py={10}
+            spacing={2}
+            width={{ md: '524px', sm: '100%', xs: '100%' }}
+            zIndex={9}
+          >
             <Box className={rubik.className}>
               <Typography
                 color="#fff"
                 variant="h3"
-                fontSize="70px"
+                fontSize={{ md: '70px', sm: '60px', xs: '50px' }}
                 lineHeight="80px"
                 letterSpacing="0.1em"
               >
@@ -84,7 +90,7 @@ export default function Home() {
                 <Typography
                   color={palette.secondary.main}
                   variant="h3"
-                  fontSize="70px"
+                  fontSize={{ md: '70px', sm: '60px', xs: '50px' }}
                   lineHeight="80px"
                 >
                   C{' '}
@@ -94,13 +100,13 @@ export default function Home() {
                   src="/wheel.png"
                   alt=""
                   width="90px"
-                  height="60px"
+                  height={{ md: '60px', sm: '50px', xs: '45px' }}
                   ml={-2}
                 />
                 <Typography
                   color="#fff"
                   variant="h3"
-                  fontSize="70px"
+                  fontSize={{ md: '70px', sm: '60px', xs: '50px' }}
                   lineHeight="80px"
                   letterSpacing="0.1em"
                   ml={-2}
@@ -133,6 +139,7 @@ export default function Home() {
             justifyContent="space-evenly"
             flexWrap="wrap"
             zIndex={9}
+            gap={2}
           >
             {cardData.map((card) => (
               <HomeCard key={card.key} head={card.head} text={card.text} />

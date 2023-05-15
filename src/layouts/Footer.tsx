@@ -22,7 +22,7 @@ export default function Footer() {
       display="flex"
       justifyContent="space-between"
       flexDirection={{ xs: 'column', md: 'row', sm: 'row' }}
-      px={2}
+      px={8}
       py={3}
       component="footer"
       sx={{ background: palette.primary.main }}
