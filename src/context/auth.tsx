@@ -7,6 +7,7 @@ interface AuthContextData {
   user: User | null
   isAuthenticated: boolean
   setIsAuthenticated: (value: boolean) => void
+  logout: () => void
 }
 
 export const AuthContext = createContext<AuthContextData | null>(null)
@@ -31,11 +32,18 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     setIsAuthenticated(false)
   }, [])
 
+  const logout = () => {
+    window.localStorage.removeItem('token')
+    setIsAuthenticated(false)
+    setUser(null)
+  }
+
   const value = useMemo(
     () => ({
       user,
       isAuthenticated,
       setIsAuthenticated,
+      logout,
     }),
     [user, isAuthenticated],
   )
