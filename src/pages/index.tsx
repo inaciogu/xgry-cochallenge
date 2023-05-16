@@ -3,9 +3,9 @@ import { Box, Button, Stack, Typography, useTheme } from '@mui/material'
 import Head from 'next/head'
 import DarkWheelIcon from '../../public/DarkWheelIcon'
 import { Coda, Rubik } from 'next/font/google'
-import Overlay from '@/layouts/Overlay'
 import HomeCard from '@/components/HomeCard'
 import Footer from '@/layouts/Footer'
+import { useRouter } from 'next/navigation'
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -41,6 +41,7 @@ const cardData = [
 ]
 
 export default function Home() {
+  const router = useRouter()
   const { palette } = useTheme()
 
   return (
@@ -67,7 +68,6 @@ export default function Home() {
             backgroundSize: 'cover',
           }}
         >
-          <Overlay />
           <Navbar />
           <Stack
             px={8}
@@ -127,6 +127,7 @@ export default function Home() {
                 width: '233px',
                 height: '41px',
               }}
+              onClick={() => router.push('/signIn')}
             >
               <Typography className={coda.className} color="#2F4858">
                 COMECE AGORA
@@ -186,6 +187,7 @@ export default function Home() {
                 width: '233px',
                 height: '41px',
               }}
+              onClick={() => router.push('/signIn')}
             >
               <Typography className={coda.className} color="#2F4858">
                 COMECE AGORA
