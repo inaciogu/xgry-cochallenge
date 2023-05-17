@@ -7,6 +7,7 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { SignInWithGoogle } from '../../useCases/signInWithGoogle'
 import { useSnackbar } from 'notistack'
 import Header from './Header'
+import Head from 'next/head'
 
 export default function SignIn() {
   const router = useRouter()
@@ -50,95 +51,111 @@ export default function SignIn() {
   }
 
   return (
-    <Grid container component="main" sx={{ height: '100vh' }}>
-      <Header />
-      <Grid
-        item
-        md={6}
-        sx={{
-          backgroundImage: 'url(/driver.png)',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
-      />
-      <Grid item xs={12} sm={12} md={6} component={Paper} elevation={6} square>
-        <Box
+    <>
+      <Head>
+        <title>Pilotas.Co | Login</title>
+        <meta name="description" content="pilotas co website login page" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/wheel.ico" />
+      </Head>
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <Header />
+        <Grid
+          item
+          md={6}
           sx={{
-            my: 15,
-            mx: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            backgroundImage: 'url(/driver.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
           }}
+        />
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          component={Paper}
+          elevation={6}
+          square
         >
-          <Typography component="h1" variant="h5">
-            Login
-          </Typography>
           <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 1, p: 2 }}
+            sx={{
+              my: 15,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              onChange={handleChange}
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Senha"
-              type="password"
-              id="password"
-              onChange={handleChange}
-              autoComplete="current-password"
-            />
-            <LoadingButton
-              type="submit"
-              loading={loading}
-              fullWidth
-              variant="contained"
-              sx={{
-                mt: 3,
-                mb: 2,
-                border: '1px solid #00000033',
-                fontSize: '13px',
-                letterSpacing: '0.3em',
-                fontWeight: 400,
-              }}
-            >
+            <Typography component="h1" variant="h5">
               Login
-            </LoadingButton>
+            </Typography>
             <Box
-              display="flex"
-              width="100%"
-              justifyContent="space-between"
-              alignItems="center"
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1, p: 2 }}
             >
-              <Box border="1px solid grey" width="40%" height="0" />
-              <Typography>Ou</Typography>
-              <Box border="1px solid grey" width="40%" height="0" />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                onChange={handleChange}
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Senha"
+                type="password"
+                id="password"
+                onChange={handleChange}
+                autoComplete="current-password"
+              />
+              <LoadingButton
+                type="submit"
+                loading={loading}
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  border: '1px solid #00000033',
+                  fontSize: '13px',
+                  letterSpacing: '0.3em',
+                  fontWeight: 400,
+                }}
+              >
+                Login
+              </LoadingButton>
+              <Box
+                display="flex"
+                width="100%"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box border="1px solid grey" width="40%" height="0" />
+                <Typography>Ou</Typography>
+                <Box border="1px solid grey" width="40%" height="0" />
+              </Box>
             </Box>
+            <Button
+              startIcon={<Google />}
+              onClick={handleSignInWithGoogle}
+              variant="outlined"
+            >
+              Entrar com google
+            </Button>
           </Box>
-          <Button
-            startIcon={<Google />}
-            onClick={handleSignInWithGoogle}
-            variant="outlined"
-          >
-            Entrar com google
-          </Button>
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   )
 }
