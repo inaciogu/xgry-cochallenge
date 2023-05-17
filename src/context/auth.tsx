@@ -1,6 +1,5 @@
-import { DecodedToken } from '@/interfaces/decodedToken'
 import { User } from '@/interfaces/user'
-import jwtDecode from 'jwt-decode'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import { ReactNode, createContext, useEffect, useMemo, useState } from 'react'
 
 interface AuthContextData {
@@ -17,30 +16,21 @@ interface AuthProviderProps {
 }
 
 export default function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null)
+  const user = useUser()
+  const supabase = useSupabaseClient()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {
-    const storedToken = window.localStorage.getItem('token')
-    if (storedToken) {
-      const decoded: DecodedToken = jwtDecode(storedToken)
-      setUser(decoded.user_metadata)
-      setIsAuthenticated(true)
-      return
-    }
-    setUser(null)
-    setIsAuthenticated(false)
-  }, [])
+    setIsAuthenticated(!!user)
+  }, [user])
 
   const logout = () => {
-    window.localStorage.removeItem('token')
-    setIsAuthenticated(false)
-    setUser(null)
+    supabase.auth.signOut()
   }
 
   const value = useMemo(
     () => ({
-      user,
+      user: user?.user_metadata as User,
       isAuthenticated,
       setIsAuthenticated,
       logout,
