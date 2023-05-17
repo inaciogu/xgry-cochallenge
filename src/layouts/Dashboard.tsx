@@ -19,8 +19,9 @@ import {
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MenuOutlined } from '@mui/icons-material'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
+import Footer from './Footer'
 
 const options = [
   { text: 'FAC', href: '/fac' },
@@ -36,7 +37,11 @@ const coda = Coda({
   subsets: ['latin'],
 })
 
-export default function Dashboard() {
+interface DashboardProps {
+  children: ReactNode
+}
+
+export default function Dashboard({ children }: DashboardProps) {
   const { palette, breakpoints } = useTheme()
   const router = useRouter()
   const { logout, user } = useAuth()
@@ -48,6 +53,10 @@ export default function Dashboard() {
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
+  }
+
+  const toggleDrawer = () => {
+    setOpenDrawer(!openDrawer)
   }
 
   const handleCloseUserMenu = () => {
@@ -75,7 +84,7 @@ export default function Dashboard() {
             />
             <Box display="flex">
               <IconButton
-                onClick={() => setOpenDrawer(true)}
+                onClick={toggleDrawer}
                 sx={{ display: { md: 'none', xs: 'flex' } }}
               >
                 <MenuOutlined />
@@ -108,48 +117,58 @@ export default function Dashboard() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: isMobile ? '100%' : '354px',
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: 354,
-            boxSizing: 'border-box',
-            background: '#110F0F',
-          },
-        }}
-        variant={isMobile ? 'temporary' : 'permanent'}
-        open={openDrawer}
-        anchor="left"
-        onClose={() => setOpenDrawer(false)}
-      >
-        <List>
-          {options.map((option) => {
-            const isSelected = router.pathname === option.href
-
-            const optionColor = isSelected
-              ? palette.secondary.main
-              : palette.primary.main
-            return (
-              <ListItem key={option.text}>
-                <ListItemButton>
-                  <Link
-                    href={option.href}
-                    style={{ textDecoration: 'none', color: optionColor }}
-                  >
-                    <Typography
-                      className={coda.className}
-                      sx={{ letterSpacing: '0.3em', lineHeight: '21px' }}
-                    >
-                      {option.text}
-                    </Typography>
-                  </Link>
-                </ListItemButton>
-              </ListItem>
-            )
-          })}
-        </List>
-      </Drawer>
+      <Box display="flex" justifyContent="center" width="100%">
+        <Drawer
+          sx={{
+            width: isMobile ? '100%' : '354px',
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              width: isMobile ? '70%' : '354px',
+              height: '100%',
+              py: 12,
+              display: 'flex',
+              flexDirection: 'column',
+              boxSizing: 'border-box',
+              background: '#110F0F',
+            },
+          }}
+          variant={isMobile ? 'temporary' : 'permanent'}
+          open={openDrawer}
+          anchor="left"
+          onClose={() => setOpenDrawer(false)}
+        >
+          <List>
+            {options.map((option) => {
+              const isSelected = router.pathname === option.href
+              const optionColor = isSelected
+                ? palette.secondary.main
+                : palette.primary.main
+              return (
+                <Link
+                  key={option.text}
+                  href={option.href}
+                  style={{ textDecoration: 'none', color: optionColor }}
+                >
+                  <ListItem>
+                    <ListItemButton>
+                      <Typography
+                        className={coda.className}
+                        sx={{ letterSpacing: '0.3em', lineHeight: '21px' }}
+                      >
+                        {option.text}
+                      </Typography>
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+              )
+            })}
+          </List>
+        </Drawer>
+        <Box pt={10} width="60%">
+          {children}
+        </Box>
+      </Box>
+      <Footer position="absolute" zIndex={999999} width="100%" bottom={0} />
     </Box>
   )
 }
