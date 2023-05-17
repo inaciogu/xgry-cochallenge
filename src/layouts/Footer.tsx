@@ -1,6 +1,7 @@
 import Logo from '@/components/Logo'
 import {
   Box,
+  BoxProps,
   Button,
   Stack,
   TextField,
@@ -14,7 +15,7 @@ const rubik = Rubik({
   subsets: ['latin'],
 })
 
-export default function Footer() {
+export default function Footer({ ...props }: BoxProps) {
   const { palette } = useTheme()
 
   return (
@@ -26,6 +27,7 @@ export default function Footer() {
       py={3}
       component="footer"
       sx={{ background: palette.primary.main }}
+      {...props}
     >
       <Logo sx={{ color: 'white' }} />
       <Stack spacing={2} color="white">
