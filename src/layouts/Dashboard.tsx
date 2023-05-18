@@ -64,9 +64,15 @@ export default function Dashboard({ children }: DashboardProps) {
   }
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
       <AppBar
-        position="absolute"
+        position="relative"
         sx={{
           width: '100%',
           zIndex: 99999,
@@ -164,11 +170,11 @@ export default function Dashboard({ children }: DashboardProps) {
             })}
           </List>
         </Drawer>
-        <Box pt={10} width="60%">
+        <Box minHeight="100vh" width="60%" pt={5}>
           {children}
         </Box>
       </Box>
-      <Footer position="absolute" zIndex={999999} width="100%" bottom={0} />
+      <Footer position="relative" zIndex={999999} width="100%" />
     </Box>
   )
 }
