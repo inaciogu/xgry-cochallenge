@@ -1,6 +1,7 @@
 import { Box, BoxProps, Typography, useTheme } from '@mui/material'
 import { Coda } from 'next/font/google'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const coda = Coda({
   weight: '400',
@@ -9,9 +10,16 @@ const coda = Coda({
 
 export default function Logo({ ...props }: BoxProps) {
   const { palette } = useTheme()
+  const router = useRouter()
 
   return (
-    <Box display="flex" alignItems="center" {...props}>
+    <Box
+      display="flex"
+      alignItems="center"
+      onClick={() => router.push('/')}
+      style={{ cursor: 'pointer' }}
+      {...props}
+    >
       <Typography
         letterSpacing="0.3em"
         display="inline-flex"
