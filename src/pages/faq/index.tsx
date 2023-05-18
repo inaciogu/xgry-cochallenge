@@ -57,11 +57,10 @@ export default function Faq({ questions }: FaqProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/car-troubleshooting-answers`,
-  )
-  console.log(response.data)
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_SITE_URL
+  const response = await axios.get(`${baseUrl}/api/car-troubleshooting-answers`)
 
   return {
     props: {
