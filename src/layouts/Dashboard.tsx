@@ -24,7 +24,7 @@ import { useAuth } from '@/hooks/useAuth'
 import Footer from './Footer'
 
 const options = [
-  { text: 'FAC', href: '/fac' },
+  { text: 'FAQ', href: '/faq' },
   { text: 'MANUAL', href: '/manual' },
   { text: 'PAINEL CARRO', href: '/car-dashboard' },
   { text: 'PROBLEMAS EXTERNOS', href: '/external-problems' },

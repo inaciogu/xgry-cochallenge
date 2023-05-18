@@ -81,14 +81,14 @@ export default function Navbar() {
                 }}
               >
                 <Link
-                  href="/fac"
+                  href="/faq"
                   style={{ textDecoration: 'none', color: 'white' }}
                 >
                   <Typography
                     sx={{ fontSize: '15px', letterSpacing: '0.3em' }}
                     className={coda.className}
                   >
-                    FAC
+                    FAQ
                   </Typography>
                 </Link>
                 <Link
@@ -150,7 +150,7 @@ export default function Navbar() {
               <ListItemIcon>
                 <QuestionAnswer />
               </ListItemIcon>
-              <Link href="/fac">FAC</Link>
+              <Link href="/faq">FAQ</Link>
             </ListItem>
             <ListItem>
               <ListItemIcon>
