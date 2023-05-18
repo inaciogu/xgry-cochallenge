@@ -103,7 +103,7 @@ export default function Navbar() {
                   </Typography>
                 </Link>
                 <Link
-                  href="/painel"
+                  href="/car-dashboard"
                   style={{ textDecoration: 'none', color: 'white' }}
                 >
                   <Typography
@@ -156,13 +156,13 @@ export default function Navbar() {
               <ListItemIcon>
                 <Book />
               </ListItemIcon>
-              <Link href="/faq">Manual</Link>
+              <Link href="/manual">Manual</Link>
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <ControlPoint />
               </ListItemIcon>
-              <Link href="/faq">Painel</Link>
+              <Link href="/car-dashboard">Painel</Link>
             </ListItem>
           </List>
         </Box>

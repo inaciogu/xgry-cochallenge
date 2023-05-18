@@ -26,8 +26,8 @@ import Footer from './Footer'
 const options = [
   { text: 'FAC', href: '/fac' },
   { text: 'MANUAL', href: '/manual' },
-  { text: 'PAINEL CARRO', href: '/painel' },
-  { text: 'PROBLEMAS EXTERNOS', href: '/problemas-externos' },
+  { text: 'PAINEL CARRO', href: '/car-dashboard' },
+  { text: 'PROBLEMAS EXTERNOS', href: '/external-problems' },
   { text: 'OFICINAS PRÓXIMAS', href: '' },
   { text: 'SUPORTE', href: '' },
 ]
