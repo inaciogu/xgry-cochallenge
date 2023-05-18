@@ -139,6 +139,7 @@ export default function Home() {
             alignItems="center"
             justifyContent="space-evenly"
             flexWrap="wrap"
+            pb={3}
             zIndex={9}
             gap={2}
           >

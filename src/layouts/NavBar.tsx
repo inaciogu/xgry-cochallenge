@@ -50,6 +50,7 @@ export default function Navbar() {
         variant="outlined"
         position="relative"
         color="transparent"
+        elevation={0}
         sx={{ border: 'none' }}
       >
         <Toolbar>
