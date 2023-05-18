@@ -1,7 +1,7 @@
 import SupabaseAuthGuard from '@/guards/SupabaseAuthGuard'
 import Dashboard from '@/layouts/Dashboard'
+import { GetCarTroubleshootingAnswers } from '@/useCases/getCarTroubleshootingAnswers'
 import { Stack, Typography } from '@mui/material'
-import axios from 'axios'
 import { GetStaticProps } from 'next'
 import { Coda } from 'next/font/google'
 import Head from 'next/head'
@@ -57,14 +57,12 @@ export default function Faq({ questions }: FaqProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_SITE_URL
-  const response = await axios.get(`${baseUrl}/api/car-troubleshooting-answers`)
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await new GetCarTroubleshootingAnswers().execute()
 
   return {
     props: {
-      questions: response.data.questions,
+      questions: response.questions,
     },
   }
 }
