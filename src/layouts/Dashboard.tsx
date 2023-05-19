@@ -25,6 +25,7 @@ import Footer from './Footer'
 
 const options = [
   { text: 'FAQ', href: '/faq' },
+  { text: 'ASSISTENTE VIRTUAL', href: '/virtual-assistant' },
   { text: 'MANUAL', href: '/manual' },
   { text: 'PAINEL CARRO', href: '/car-dashboard' },
   { text: 'PROBLEMAS EXTERNOS', href: '/external-problems' },
